@@ -1,8 +1,8 @@
 <?php
-// session_start();
+session_start();
 include('server.php');
+include("inc/connect.php");
 
-// include("inc/chkSession.php");
 $errors = array();
 
 if (isset($_POST["loginbtn"])) 
@@ -28,21 +28,20 @@ if (isset($_POST["loginbtn"]))
             session_start();
             $_SESSION['sess_id'] = session_id();
             $_SESSION['sess_username'] = $username;
-            // $_SESSION['success'] = "You are now logged in";
-            header("Location: new_Consult.php");
+            header("Location: consult.php");
             exit();
 
         } else {
 
             array_push($errors, "Wrong Username and Password");
             $_SESSION['error'] = "Wrong Username and Password!";
-            header("Location: new_login.php");
+            header("Location: login.php");
             exit();
         }
     } else {
         array_push($errors, "Username and Password are required");
         $_SESSION['error'] = "Username and Password are required";
-        header("Location: new_login.php");
+        header("Location: login.php");
         
         
     }
@@ -61,5 +60,4 @@ if (isset($_POST["loginbtn"]))
         $images = $stmt->fetchAll(PDO::FETCH_ASSOC); // ดึงข้อมูลทั้งหมดออกมาเป็น array
         return $images;  // ส่งข้อมูลออกไป
         
-
 ?>
