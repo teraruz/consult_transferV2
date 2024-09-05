@@ -1,7 +1,6 @@
 <?php
 session_start();
-include('server.php');
-include("inc/connect.php");
+include('config/connect.php');
 
 $errors = array();
 
@@ -42,8 +41,7 @@ if (isset($_POST["loginbtn"]))
         array_push($errors, "Username and Password are required");
         $_SESSION['error'] = "Username and Password are required";
         header("Location: login.php");
-        
-        
+        exit();
     }
 }
 

@@ -1,18 +1,17 @@
 <?php
-$dsn = "mysql:host=localhost;dbname=consult_transfer;charset=utf8"; // Data Source Name
+$servername = "localhost"; // ชื่อเซิร์ฟเวอร์ MySQL
 $dbusername = "root"; // ชื่อผู้ใช้ MySQL
 $dbpassword = ""; // รหัสผ่าน MySQL
+$dbname = "consult_transfer"; // ชื่อฐานข้อมูลที่ต้องการเชื่อมต่อ
 
-try {
-    // สร้างการเชื่อมต่อ
-    $pdo = new PDO($dsn, $dbusername, $dbpassword);
+// สร้างการเชื่อมต่อ
+$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-    // ตั้งค่าโหมดการแจ้งเตือนข้อผิดพลาดเป็นแบบ Exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; 
-    
-} catch (PDOException $e) {
-
-    echo "Connection failed: " . $e->getMessage();
+// ตรวจสอบการเชื่อมต่อ
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+echo "Connected successfully";
+
 ?>

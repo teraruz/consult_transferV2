@@ -59,6 +59,8 @@ h1 {
     font-weight: bold;
     font-family: "Kanit", sans-serif;
     font-style: normal;
+    font-size: 35px;
+    color: #344767;
 
 }
 
@@ -69,7 +71,9 @@ h2 {
 }
 
 h4 {
+    font-size: 20px;
     margin: 0px;
+    color: #344767;
 
 }
 
@@ -103,7 +107,9 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 button:active {
@@ -122,7 +128,6 @@ button.ghost {
 form {
     background-color: #FFFFFF;
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 0 50px;
@@ -282,7 +287,7 @@ img {
 }
 
 footer {
-    background-color: #f6f5f7;
+    /* background-color: #f6f5f7; */
     color: #505050;
     font-size: 14px;
     bottom: 0;
@@ -291,6 +296,8 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
+    opacity: 1; // Leave this as 1
+    background-color: rgba(0,0,0,0.6);
 }
 
 footer p {
@@ -386,7 +393,7 @@ footer a {
     <div class="container" id="container">
         <div class="form-container sign-in-container">
 
-            <form id="loginForm" action="newlogin_db.php" method="post">
+            <form id="loginForm" action="logindb.php" method="post">
                 <h4> AOC 1441 <i class="material-icons">support_agent</i></h4>
                 <h1>Consult Transfer </h1>
 
@@ -417,7 +424,7 @@ footer a {
     <footer>
         <p>
         <div class="col-12 col-md-12 my-auto text-center ">
-            <img src="img/totcs.png" alt="" width="150px">
+            <img src="assets/image/totcs.png" alt="" width="150px">
             <div class="copyright">
                 © <span style="color : grey">
                     <script>
@@ -433,29 +440,29 @@ footer a {
 </body>
 
 <script>
-    // Clear input username password 
-     window.onload = function () {
-        document.querySelectorAll('input[type="text"]').forEach(input => {
-            input.value = ''; // เคลียร์ค่าของ input
-        });
-        document.querySelectorAll('input[type="password"]').forEach(input => {
-            input.value = ''; // เคลียร์ค่าของ password
-        });
-    };
+// Clear input username password 
+window.onload = function() {
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+        input.value = ''; // เคลียร์ค่าของ input
+    });
+    document.querySelectorAll('input[type="password"]').forEach(input => {
+        input.value = ''; // เคลียร์ค่าของ password
+    });
+};
 
-      // ฟังก์ชันเพื่อป้องกันการกลับหรือไปหน้าต่อไป
-      function disableBackAndForward() {
-        // เพิ่มสถานะในประวัติการเข้าชม
+// ฟังก์ชันเพื่อป้องกันการกลับหรือไปหน้าต่อไป
+function disableBackAndForward() {
+    // เพิ่มสถานะในประวัติการเข้าชม
+    window.history.pushState(null, null, window.location.href);
+
+    // ฟังเหตุการณ์ 'popstate' ซึ่งเกิดขึ้นเมื่อใช้ปุ่มย้อนกลับหรือถัดไป
+    window.addEventListener('popstate', function(event) {
+        // เพิ่มสถานะใหม่ทุกครั้งที่เกิด 'popstate'
         window.history.pushState(null, null, window.location.href);
-
-        // ฟังเหตุการณ์ 'popstate' ซึ่งเกิดขึ้นเมื่อใช้ปุ่มย้อนกลับหรือถัดไป
-        window.addEventListener('popstate', function (event) {
-            // เพิ่มสถานะใหม่ทุกครั้งที่เกิด 'popstate'
-            window.history.pushState(null, null, window.location.href);
-        });
-    }
-    // เรียกใช้ฟังก์ชันเพื่อป้องกันปุ่มย้อนกลับและถัดไป
-    disableBackAndForward();
+    });
+}
+// เรียกใช้ฟังก์ชันเพื่อป้องกันปุ่มย้อนกลับและถัดไป
+disableBackAndForward();
 </script>
 
 </html>
