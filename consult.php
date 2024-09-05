@@ -514,6 +514,8 @@ footer {
     text-align: center;
     height: 30px;
     padding-bottom: 30px;
+    opacity: 1; // Leave this as 1
+    background-color: rgba(0,0,0,0.6);
 }
 
 .copyright {
@@ -838,7 +840,7 @@ footer {
                         </div>
                         <center>
                             <br><br>
-                            <img src="img/icon/during.gif" alt="" width="25%;">
+                            <img src="assets/image/during.gif" alt="" width="25%;">
                             <br>
                             <h2 style="color:red;">During KYC</h2>
                             <h4>ระบบกำลังดำเนินการกรุณารอสักครู่เพื่อรอธนาคารติดต่อกลับไป</h4>
@@ -875,8 +877,8 @@ footer {
         <p>
         <div class="row" style="padding-top: 10px;">
             <div class="col">
-                <img src="img/totcs.png" width="130px" style="vertical-align:middle">
-                © <script style="color : grey">
+                <img src="assets/image/totcs.png" width="130px" style="vertical-align:middle">
+                © <script style="color : black;">
                 document.write(new Date().getFullYear())
                 </script>, by
                 <a href="#" class="font-weight-bold">Cloud and Digital Service Development Sector 3</a>

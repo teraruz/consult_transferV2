@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <h1 style="color:red; text-align:center;">
         <?php
             include('config/connect.php');
