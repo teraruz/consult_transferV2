@@ -648,6 +648,40 @@ footer {
         <br>
         <div class="row">
             <div class="containercard">
+        <?php
+            // เชื่อมต่อฐานข้อมูล
+            $conn = new mysqli("localhost", "root", "", "consult_transfer");
+
+            // ตรวจสอบการเชื่อมต่อ
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // ดึงข้อมูลจากฐานข้อมูล
+            $sql = "SELECT * FROM bankcard";
+            $result = $conn->query($sql);
+
+            // ตรวจสอบว่ามีข้อมูลหรือไม่
+            if ($result->num_rows > 0) {
+            // วนลูปแสดงผลข้อมูล
+            while($row = $result->fetch_assoc()) {
+                echo '
+                <div class="col-card">
+                    <div class ="cardbank-body">
+                        <img src="' . $row["bankcard_img"] . '" alt="Card Image" class="cardbank-img">
+                        <h2 class="cardbank-title">' . $row["bankcard_name"] . '</h2>
+                        <p class="cardbank-text">' . $row["bankcard_nameth"] . '</p>
+                        <p class="cardbank-numtext">' . $row["bankcard_call"] . '</p>
+                         <hr class="horizontal dark my-3">
+                    </div>
+                </div>';
+            }
+            } else {
+                echo "ไม่มีข้อมูล";
+            }
+            // ปิดการเชื่อมต่อฐานข้อมูล
+            $conn->close();
+        ?>
                 <div class="col-card" id="card1">
                     <div class="cardbank-body">
                         <img src="https://seeklogo.com/images/S/siam-commercial-bank-logo-B9BB3E105F-seeklogo.com.png"

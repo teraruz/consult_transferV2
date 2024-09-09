@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -387,6 +390,11 @@ footer a {
     border: 1px solid #3c763d;
     margin-bottom: 10px;
 }
+
+.swal2-container {
+    background: rgba(0, 0, 0, 0) !important;  /* ทำให้พื้นหลังของ SweetAlert2 โปร่งใส */
+}
+
 </style>
 
 <body class="bg-grey-200">
@@ -396,15 +404,6 @@ footer a {
             <form id="loginForm" action="logindb.php" method="post">
                 <h4> AOC 1441 <i class="material-icons">support_agent</i></h4>
                 <h1>Consult Transfer </h1>
-
-                <?php if (isset($_SESSION['error'])): ?>
-                <div class="error">
-                    <?php
-                        echo $_SESSION['error'];
-                        unset($_SESSION['error']);
-                        ?>
-                </div>
-                <?php endif ?>
 
                 <label style="padding-right: 220px;">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -464,5 +463,8 @@ function disableBackAndForward() {
 // เรียกใช้ฟังก์ชันเพื่อป้องกันปุ่มย้อนกลับและถัดไป
 disableBackAndForward();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
 </html>
