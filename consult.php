@@ -649,22 +649,13 @@ footer {
         <div class="row">
             <div class="containercard">
         <?php
-            // เชื่อมต่อฐานข้อมูล
-            $conn = new mysqli("localhost", "root", "", "consult_transfer");
+            
+            include('connect.php');                   //เชื่อมต่อฐานข้อมูล
+            $sql = "SELECT * FROM bankcard";         // ดึงข้อมูลจากฐานข้อมูล
+            $result = $conn->query($sql);         
 
-            // ตรวจสอบการเชื่อมต่อ
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            // ดึงข้อมูลจากฐานข้อมูล
-            $sql = "SELECT * FROM bankcard";
-            $result = $conn->query($sql);
-
-            // ตรวจสอบว่ามีข้อมูลหรือไม่
-            if ($result->num_rows > 0) {
-            // วนลูปแสดงผลข้อมูล
-            while($row = $result->fetch_assoc()) {
+            if ($result->num_rows > 0) {            // ตรวจสอบว่ามีข้อมูลหรือไม่ฃ
+            while($row = $result->fetch_assoc()) {  // วนลูปแสดงผลข้อมูล
                 echo '
                 <div class="col-card">
                     <div class ="cardbank-body">
@@ -672,15 +663,15 @@ footer {
                         <h2 class="cardbank-title">' . $row["bankcard_name"] . '</h2>
                         <p class="cardbank-text">' . $row["bankcard_nameth"] . '</p>
                         <p class="cardbank-numtext">' . $row["bankcard_call"] . '</p>
-                         <hr class="horizontal dark my-3">
+                        <hr class="horizontal dark my-3"></hr>
+                        <button id="callbackbtn" class="cardbank-btn kanit-regular" type="button">โอนสาย</button>                         
                     </div>
                 </div>';
             }
             } else {
                 echo "ไม่มีข้อมูล";
             }
-            // ปิดการเชื่อมต่อฐานข้อมูล
-            $conn->close();
+            $conn->close();   // ปิดการเชื่อมต่อฐานข้อมูล
         ?>
                 <div class="col-card" id="card1">
                     <div class="cardbank-body">
