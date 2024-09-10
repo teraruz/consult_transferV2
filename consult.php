@@ -654,7 +654,7 @@ footer {
             $sql = "SELECT * FROM bankcard";         // ดึงข้อมูลจากฐานข้อมูล
             $result = $conn->query($sql);         
 
-            if ($result->num_rows > 0) {            // ตรวจสอบว่ามีข้อมูลหรือไม่ฃ
+            if ($result->num_rows > 0) {            // ตรวจสอบว่ามีข้อมูลหรือไม่
             while($row = $result->fetch_assoc()) {  // วนลูปแสดงผลข้อมูล
                 echo '
                 <div class="col-card">
@@ -664,7 +664,7 @@ footer {
                         <p class="cardbank-text">' . $row["bankcard_nameth"] . '</p>
                         <p class="cardbank-numtext">' . $row["bankcard_call"] . '</p>
                         <hr class="horizontal dark my-3"></hr>
-                        <button id="callbackbtn" class="cardbank-btn kanit-regular" type="button">โอนสาย</button>                         
+                        <button id="callbackbtn-' . $row["bankcard_id"] . '" class="cardbank-btn kanit-regular" type="button" onclick="callBank(' . $row["bankcard_id"] . ')">โอนสาย</button>                        
                     </div>
                 </div>';
             }
@@ -1068,6 +1068,18 @@ function disableBackAndForward() {
 
 // เรียกใช้ฟังก์ชันเพื่อป้องกันปุ่มย้อนกลับและถัดไป
 disableBackAndForward();
+</script>
+
+<script>
+
+function callBank(bankid) {
+    // ดำเนินการตาม id ของธนาคารที่รับมา เช่น แสดง alert หรือเรียกใช้ฟังก์ชันอื่น
+    alert('You clicked on bank with ID: ' + bankid);
+
+    // หรือคุณสามารถทำให้มันทำงานอย่างอื่นได้ เช่น redirect ไปหน้าที่เกี่ยวข้องกับ ID นั้น
+    // window.location.href = 'bank_details.php?id=' + bankId;
+}
+
 </script>
 
 
