@@ -1,20 +1,14 @@
 <?php 
 include("config/chkSession.php");
+session_start();
 error_reporting(1);
+
     include("logindb.php");
-
-    echo $sess_username;
-    
-
-    // if (!isset($_SESSION['username'])) {
-    //     $_SESSION['msg'] = "You must login first";
-    //     header('location: new_login.php');
-    // }
 
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);
-        header('location: new_login.php');
+        header('location: login.php');
     }
 
 ?>
@@ -941,7 +935,10 @@ function LogoutFunction() {
             window.location.href = "http://localhost/ConsultTransfer/pages/aoc-consult/new_login.php";
             <?php
             session_destroy();
+            unset($_SESSION['sess_id']);
+            unset($_SESSION['sess_username']);
             ?>
+            console.log('<?php echo $_SESSION['sess_username']; ?>');
         }
     });
 }
