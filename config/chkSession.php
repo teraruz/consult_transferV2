@@ -18,5 +18,10 @@
 		header('Location: login.php');
 		exit();
 	}
+
+	if (!isset($_SESSION['sess_username'])) {
+        header('location: login.php');
+		exit();	
+    }
  
  ?>

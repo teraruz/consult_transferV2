@@ -587,7 +587,7 @@ footer {
             ?>
             <li class="nav-item"><a href="#"><?php echo $_SESSION['sess_username']; ?></a></li>
             <li class="nav-item dropdown">
-                <a href="#" data-action="dropdown-toggle">Menu</a>
+                <a data-action="dropdown-toggle">Menu</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" id="logoutbtn" onclick="LogoutFunction();">Logout</a>
                 </div>
@@ -650,7 +650,7 @@ footer {
 
             if ($result->num_rows > 0) {            // ตรวจสอบว่ามีข้อมูลหรือไม่
             while($row = $result->fetch_assoc()) {  // วนลูปแสดงผลข้อมูล
-                echo '
+                echo '  
                 <div class="col-card">
                     <div class ="cardbank-body">
                         <img src="' . $row["bankcard_img"] . '" alt="Card Image" class="cardbank-img">

@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost"; // ชื่อเซิร์ฟเวอร์ MySQL
 $dbusername = "root"; // ชื่อผู้ใช้ MySQL
 $dbpassword = ""; // รหัสผ่าน MySQL
