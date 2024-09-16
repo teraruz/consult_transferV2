@@ -1070,9 +1070,13 @@ disableBackAndForward();
 <script>
 
 function callBank(bankid) {
-    // ดำเนินการตาม id ของธนาคารที่รับมา เช่น แสดง alert หรือเรียกใช้ฟังก์ชันอื่น
-    alert('You clicked on bank with ID: ' + bankid);
-
+    // ดำเนินการตาม id ของธนาคารที่รับมา เช่น แสดง sweetalert หรือเรียกใช้ฟังก์ชันอื่น
+    Swal.fire({
+        title: 'Card Bank Clicked',
+        text: 'You clicked on bank with ID: ' + bankid,
+        icon: 'info',
+        confirmButtonText: 'OK'
+    });
     // หรือคุณสามารถทำให้มันทำงานอย่างอื่นได้ เช่น redirect ไปหน้าที่เกี่ยวข้องกับ ID นั้น
     // window.location.href = 'bank_details.php?id=' + bankId;
 }
